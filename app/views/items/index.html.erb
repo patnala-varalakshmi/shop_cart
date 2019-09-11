@@ -1,0 +1,24 @@
+
+<div class="my-3 flex">
+    <%= select_tag :name, options_for_select(@items.pluck(:name), selected: params[:id]), {class: "w-75 js-example-basic-multiple", multiple: "multiple", placeholder: "Please Select"} %>
+    <button class="btn btn-raised btn-primary rounded-50 my-1"> Add Order </button>
+</div>
+
+<%= form_with scope: :item, url: items_path, class: 'form-inline', local: true do |f| %>
+
+    <div class="form-group mb-2">
+        <%= f.text_field :name, class: 'form-control ', placeholder: "Item Name" %>
+    </div>
+    <div class="form-group mx-sm-3 mb-2 ">
+        <%= f.number_field :price, step: :any, class: 'form-control ', placeholder: "Item price" %>
+    </div>
+    
+    <%= f.submit 'Add Item', class: "btn btn-raised btn-primary rounded-50 mt-3 mb-0" %>
+
+<% end %>
+
+<div class="mb-3">
+    <% @items.each do |item| %>
+    <%= item.name %> | <%= item.price %></br>
+    <% end %>
+</div>
