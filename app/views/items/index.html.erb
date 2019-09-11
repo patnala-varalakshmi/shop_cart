@@ -16,9 +16,3 @@
     <%= f.submit 'Add Item', class: "btn btn-raised btn-primary rounded-50 mt-3 mb-0" %>
 
 <% end %>
-
-<div class="mb-3">
-    <% @items.each do |item| %>
-    <%= item.name %> | <%= item.price %></br>
-    <% end %>
-</div>
